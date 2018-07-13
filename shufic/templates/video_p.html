@@ -1,0 +1,17 @@
+{% extends 'main.html'%}
+{% block video_p%}
+{% load staticfiles %}
+{% for vid in Video %}
+
+<iframe width="854" height="480" src="{{vid.Video_Url}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<h1><a href="/videoshufic/get/{{ vid.id }}">{{ vid.Video_title }}</a></h1>
+<h2>{{ vid.Video_o }}</h2>
+
+<h1><a href="/videoshufic/Vaddlikes/{{vid.id}}"><img src="{% static 'like.jpg' %}" width = "100px" height = "60px">{{vid.Video_like}}</a></h1>
+
+
+    {% for com in vid.comment %}
+        <h3>{{ com }}</h3>
+    {% endfor %}
+{% endfor %}
+{% endblock%}
