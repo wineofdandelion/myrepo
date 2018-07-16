@@ -17,10 +17,12 @@ from django.contrib import admin
 from django.urls import include, re_path
 from shufic import Shufic_Url
 from login import login_url
+from . import views
 
 
 urlpatterns = [
     re_path(r'admin/', admin.site.urls),
     re_path(r'^videoshufic/', include(Shufic_Url)),
-    re_path(r'^auth/', include(login_url))
+    re_path(r'^auth/', include(login_url)),
+    re_path(r'^$', views.post_list)
 ]
